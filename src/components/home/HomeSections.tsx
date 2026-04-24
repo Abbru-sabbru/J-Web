@@ -5,54 +5,42 @@ import { PRODUCTS } from '@/src/constants';
 
 export function Hero() {
   return (
-    <section className="relative h-screen w-full flex items-center overflow-hidden bg-soft-pink/30">
-      <div className="absolute inset-0 bg-gradient-to-r from-soft-pink/80 to-transparent z-10" />
-      <img
-        src="https://images.unsplash.com/photo-1515562141207-7a18b5ce7142?auto=format&fit=crop&q=80&w=1920&h=1080"
-        alt="Zeenora Hero"
-        className="absolute inset-0 w-full h-full object-cover grayscale-[20%]"
-        referrerPolicy="no-referrer"
-      />
+    <section className="relative h-screen w-full flex items-center overflow-hidden bg-editorial-bg">
+      <div className="absolute inset-0 bg-gradient-to-br from-white to-pale-pink z-10" />
+      <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[600px] h-[600px] bg-soft-pink opacity-20 rounded-full blur-3xl z-0" />
       
-      <div className="relative z-20 max-w-7xl mx-auto px-6 w-full">
+      <div className="relative z-20 max-w-7xl mx-auto px-12 md:px-24 w-full flex flex-col md:flex-row items-center justify-between gap-12">
         <motion.div
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="max-w-2xl"
         >
-          <span className="text-gold font-bold uppercase tracking-[0.3em] mb-4 block">Premium Collection</span>
-          <h1 className="text-6xl md:text-8xl font-serif text-premium-black mb-6 leading-tight">
-            Elegance <br /> <span className="italic text-rose-gold">You Deserve</span>
+          <div className="text-[10px] uppercase tracking-[0.4em] text-gold font-bold mb-8 block">Fine Jewelry Atelier</div>
+          <h1 className="text-7xl md:text-9xl font-serif text-premium-black mb-8 leading-[0.85] tracking-tighter">
+            Elegance <br /> <span className="text-gold italic">You</span> <br /> Deserve
           </h1>
-          <p className="text-lg text-premium-black/70 mb-10 max-w-lg leading-relaxed">
-            Discover our curated collection of fine jewelry, handcrafted to capture your unique essence and timeless beauty.
+          <p className="text-sm text-[#666] mb-12 max-w-sm leading-relaxed tracking-wide">
+            "Happiness is the only material we truly sell." Hand-selected collections imported directly for perfection.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4">
+          <div className="flex flex-col sm:flex-row gap-6">
             <Link
               to="/products"
-              className="bg-rose-gold text-white px-10 py-4 font-bold rounded-full hover:bg-premium-black transition-all flex items-center justify-center gap-2"
+              className="bg-gold text-white px-10 py-3 text-xs font-bold rounded-full shadow-lg shadow-gold/20 hover:bg-premium-black transition-all flex items-center justify-center gap-2 uppercase tracking-widest"
             >
-              Shop Now <ArrowRight size={18} />
+              Shop Now
             </Link>
-            <a
-              href="#pre-order"
-              className="border border-rose-gold text-rose-gold px-10 py-4 font-bold rounded-full hover:bg-rose-gold hover:text-white transition-all flex items-center justify-center"
-            >
-              Place Pre-Order
-            </a>
           </div>
         </motion.div>
-      </div>
-
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 hidden md:block">
-        <motion.div
-          animate={{ y: [0, 10, 0] }}
-          transition={{ repeat: Infinity, duration: 2 }}
-          className="w-6 h-10 border-2 border-rose-gold/30 rounded-full flex justify-center py-2"
-        >
-          <div className="w-1 h-2 bg-rose-gold rounded-full" />
-        </motion.div>
+        
+        <div className="hidden lg:block relative w-1/3 aspect-[3/4] bg-editorial-bg rounded-full overflow-hidden border-[16px] border-white luxury-shadow scale-90 translate-y-12">
+           <img
+            src="https://images.unsplash.com/photo-1515562141207-7a18b5ce7142?auto=format&fit=crop&q=80&w=800&h=1200"
+            alt="Zeenora Featured"
+            className="w-full h-full object-cover grayscale-[10%]"
+            referrerPolicy="no-referrer"
+          />
+        </div>
       </div>
     </section>
   );
@@ -62,21 +50,21 @@ export function ProductSection() {
   const featuredProducts = PRODUCTS.slice(0, 4);
 
   return (
-    <section className="py-24 px-6 max-w-7xl mx-auto">
+    <section className="py-24 px-12 max-w-7xl mx-auto border-y border-border">
       <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
         <div>
-          <h2 className="text-4xl md:text-5xl font-serif mb-4 text-premium-black">Our Masterpieces</h2>
-          <p className="text-premium-black/60 max-w-md">Each piece tells a story of elegance and craftsmanship tailored just for you.</p>
+          <div className="text-[10px] uppercase tracking-widest text-gold font-bold mb-4 block">Curated Selection</div>
+          <h2 className="text-4xl md:text-5xl font-serif italic text-premium-black">Our Masterpieces</h2>
         </div>
         <Link 
           to="/products"
-          className="text-rose-gold font-bold flex items-center gap-2 hover:translate-x-1 transition-transform border-b border-rose-gold/20 pb-1"
+          className="text-[10px] uppercase font-bold tracking-widest text-[#777] flex items-center gap-2 hover:text-gold transition-colors pb-1"
         >
-          View All Collections <ArrowRight size={16} />
+          View All Collections <ArrowRight size={12} />
         </Link>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {featuredProducts.map((product, idx) => (
           <motion.div
             key={product.id}
@@ -84,33 +72,25 @@ export function ProductSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: idx * 0.1 }}
-            className="group"
+            className="group bg-white p-4 rounded-xl border border-border hover:border-gold transition-all"
           >
-            <div className="relative aspect-square overflow-hidden rounded-2xl mb-6 luxury-shadow">
+            <div className="relative aspect-square overflow-hidden rounded-lg mb-4 bg-editorial-bg flex items-center justify-center">
               <img
                 src={product.image}
                 alt={product.name}
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 referrerPolicy="no-referrer"
               />
-              <div className="absolute top-4 right-4 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                <button className="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-lg hover:bg-rose-gold hover:text-white transition-colors">
-                  <Heart size={18} />
-                </button>
-                <button className="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-lg hover:bg-rose-gold hover:text-white transition-colors">
-                  <ShoppingCart size={18} />
-                </button>
-              </div>
-              <div className="absolute bottom-4 left-4 right-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                <button className="w-full bg-white/90 backdrop-blur-sm text-premium-black py-3 rounded-xl font-bold text-sm shadow-xl hover:bg-rose-gold hover:text-white transition-all">
-                  Order Now
-                </button>
+              <div className="absolute top-2 left-2 px-2 py-1 bg-white text-[8px] uppercase tracking-wider text-gold font-bold rounded shadow-sm opacity-0 group-hover:opacity-100 transition-opacity">
+                Hand-Picked
               </div>
             </div>
-            <div className="text-center">
-              <span className="text-[10px] uppercase tracking-widest text-rose-gold font-bold mb-1 block">{product.category}</span>
-              <h3 className="font-serif text-xl text-premium-black group-hover:text-rose-gold transition-colors">{product.name}</h3>
-              <p className="text-gold font-medium mt-1">{product.price}</p>
+            <div className="text-left">
+              <h3 className="text-xs font-bold text-premium-black uppercase truncate mb-1">{product.name}</h3>
+              <div className="text-gold font-serif text-sm italic">{product.price}</div>
+              <button className="mt-4 w-full py-2 border border-gold text-gold text-[9px] uppercase font-bold rounded-full hover:bg-gold hover:text-white transition-colors tracking-widest">
+                Order Now
+              </button>
             </div>
           </motion.div>
         ))}
@@ -121,21 +101,23 @@ export function ProductSection() {
 
 export function PreOrderSection({ onOpenModal }: { onOpenModal: () => void }) {
   return (
-    <section id="pre-order" className="py-24 bg-soft-purple/30 relative overflow-hidden">
-      <div className="absolute -top-24 -right-24 w-64 h-64 bg-rose-gold/10 rounded-full blur-3xl" />
-      <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-gold/10 rounded-full blur-3xl" />
-      
-      <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
-        <h2 className="text-4xl md:text-5xl font-serif mb-6 text-premium-black">Something Special?</h2>
-        <p className="text-xl text-premium-black/60 mb-10 leading-relaxed">
-          Cant find what you are looking for? We offer exclusive pre-order services for custom designs and rare collections. Let us bring your vision to life.
-        </p>
-        <button
-          onClick={onOpenModal}
-          className="bg-premium-black text-white px-12 py-5 rounded-full font-bold hover:bg-rose-gold transition-all shadow-xl hover:-translate-y-1"
-        >
-          Place Pre-Order
-        </button>
+    <section id="pre-order" className="py-24 px-12">
+      <div className="max-w-7xl mx-auto bg-premium-black text-white rounded-3xl p-12 md:p-20 relative overflow-hidden flex flex-col items-center text-center">
+        <div className="absolute -right-12 -top-12 w-64 h-64 bg-gold rounded-full opacity-10 blur-3xl" />
+        <div className="absolute -left-12 -bottom-12 w-64 h-64 bg-gold rounded-full opacity-5 blur-2xl" />
+        
+        <div className="relative z-10 max-w-2xl">
+          <h3 className="text-4xl md:text-6xl font-serif italic mb-4 leading-tight tracking-tighter">Special Pre-Orders</h3>
+          <p className="text-xs md:text-sm text-[#AAA] mb-12 uppercase tracking-[0.3em] font-medium leading-relaxed">
+            Can't find your perfect fit? We take custom requests and curated pre-orders directly from our master artisans.
+          </p>
+          <button
+            onClick={onOpenModal}
+            className="w-fit px-12 py-4 bg-white text-premium-black text-xs uppercase tracking-widest font-bold rounded-full hover:bg-gold hover:text-white transition-all shadow-xl"
+          >
+            Place Pre-Order
+          </button>
+        </div>
       </div>
     </section>
   );
@@ -143,10 +125,10 @@ export function PreOrderSection({ onOpenModal }: { onOpenModal: () => void }) {
 
 export function AboutSection() {
   return (
-    <section id="about" className="py-24 px-6 max-w-7xl mx-auto overflow-hidden">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+    <section id="about" className="py-32 px-12 max-w-7xl mx-auto overflow-hidden">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
         <div className="relative">
-          <div className="w-full aspect-[4/5] rounded-[2rem] overflow-hidden luxury-shadow">
+          <div className="w-full aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl border-8 border-white">
             <img
               src="https://images.unsplash.com/photo-1573408302324-4643fe424397?auto=format&fit=crop&q=80&w=800&h=1000"
               alt="About Zeenora"
@@ -157,43 +139,38 @@ export function AboutSection() {
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
-            className="absolute -bottom-8 -right-8 bg-white p-8 rounded-2xl shadow-2xl max-w-xs border border-gold/10"
+            className="absolute -bottom-8 -right-8 bg-white p-10 rounded-2xl border border-border shadow-sm max-w-xs"
           >
-            <p className="font-serif italic text-2xl text-rose-gold leading-tight mb-2">
+            <div className="text-[10px] uppercase tracking-[0.4em] text-gold font-bold mb-4 block underline decoration-soft-pink underline-offset-4">Our Philosophy</div>
+            <p className="font-serif italic text-2xl text-premium-black leading-tight">
               "We sell happiness, not materials."
             </p>
-            <p className="text-xs text-premium-black/40 uppercase tracking-widest font-bold">Zeenora Philosophy</p>
           </motion.div>
         </div>
         
-        <div>
-          <span className="text-rose-gold font-bold uppercase tracking-widest mb-4 block">Our Story</span>
-          <h2 className="text-4xl md:text-5xl font-serif mb-8 text-premium-black leading-tight">Hand-Selected Quality from the Heart of Artistry</h2>
-          <div className="space-y-6 text-premium-black/70 leading-relaxed text-lg">
-            <p>
-              At Zeenora, we believe that every piece of jewelry is a milestone, a memory, or an expression of love. That's why we meticulously hand-select our designs, importing directly from artisanal experts in China.
+        <div className="flex flex-col justify-center">
+          <h2 className="text-6xl md:text-8xl font-serif mb-10 text-premium-black leading-[0.9] tracking-tighter">
+            Curated <br /> <span className="text-gold italic">Quality</span> <br /> from China
+          </h2>
+          <div className="space-y-8 text-[#666] leading-relaxed text-sm tracking-wide">
+            <p className="text-lg text-premium-black font-medium leading-normal italic">
+              "We sell imported jewelry directly from China with a focus on quality and style."
             </p>
             <p>
-              Our focus remains steadfast on quality, authenticity, and trendsetting style. We aim to make high-end luxury accessible to everyone who appreciates the finer things in life.
+              Hand-selected for the discerning individual, our pieces are more than just accessories—they are curated stories of beauty and artistry.
             </p>
-            <ul className="space-y-4 pt-4">
-              <li className="flex items-center gap-4">
-                <div className="w-10 h-10 rounded-full bg-soft-pink flex items-center justify-center text-rose-gold">
-                  <span className="font-bold">✓</span>
+            <ul className="space-y-6 pt-6">
+              <li className="flex items-center gap-6 group">
+                <div className="w-12 h-12 rounded-full border border-border flex items-center justify-center text-gold group-hover:bg-gold group-hover:text-white transition-all">
+                  ✦
                 </div>
-                <span>Directly Imported Collections</span>
+                <span className="text-[10px] uppercase font-bold tracking-[0.2em]">Direct Artisanal Import</span>
               </li>
-              <li className="flex items-center gap-4">
-                <div className="w-10 h-10 rounded-full bg-soft-purple flex items-center justify-center text-rose-gold">
-                  <span className="font-bold">✓</span>
+              <li className="flex items-center gap-6 group">
+                <div className="w-12 h-12 rounded-full border border-border flex items-center justify-center text-gold group-hover:bg-gold group-hover:text-white transition-all">
+                  ✦
                 </div>
-                <span>Certified Quality Assurance</span>
-              </li>
-              <li className="flex items-center gap-4">
-                <div className="w-10 h-10 rounded-full bg-gold/20 flex items-center justify-center text-rose-gold">
-                  <span className="font-bold">✓</span>
-                </div>
-                <span>Personalized Concierge Service</span>
+                <span className="text-[10px] uppercase font-bold tracking-[0.2em]">Curation First Approach</span>
               </li>
             </ul>
           </div>
@@ -205,26 +182,27 @@ export function AboutSection() {
 
 export function SocialSection() {
   const platforms = [
-    { name: 'Instagram', icon: <Instagram />, color: 'bg-[#E1306C]', link: '#' },
-    { name: 'Facebook', icon: <Facebook />, color: 'bg-[#1877F2]', link: '#' },
-    { name: 'YouTube', icon: <Youtube />, color: 'bg-[#FF0000]', link: '#' },
+    { name: 'Facebook', label: 'FB' },
+    { name: 'Instagram', label: 'IG' },
+    { name: 'YouTube', label: 'YT' },
   ];
 
   return (
-    <section className="py-24 border-t border-gold/10">
-      <div className="max-w-7xl mx-auto px-6 text-center">
-        <h2 className="text-3xl font-serif mb-12">Connect With Zeenora</h2>
-        <div className="flex flex-wrap justify-center gap-8 md:gap-16">
+    <section className="py-32 border-t border-border bg-white">
+      <div className="max-w-7xl mx-auto px-12 text-center">
+        <div className="text-[10px] uppercase tracking-[0.4em] text-gold font-bold mb-4 block">Follow Our Journey</div>
+        <h2 className="text-4xl font-serif italic mb-16">Connect With Zeenora</h2>
+        <div className="flex justify-center gap-12 md:gap-24">
           {platforms.map((p) => (
             <a
               key={p.name}
-              href={p.link}
-              className="flex flex-col items-center gap-4 group"
+              href="#"
+              className="group flex flex-col items-center gap-6"
             >
-              <div className="w-20 h-20 rounded-2xl flex items-center justify-center text-white text-3xl transition-all duration-300 group-hover:scale-110 group-hover:shadow-2xl" style={{ backgroundColor: p.color.replace('bg-[', '').replace(']', '') }}>
-                {p.icon}
+              <div className="w-16 h-16 rounded-full border border-border flex items-center justify-center text-xs font-bold text-[#777] group-hover:border-gold group-hover:text-gold transition-all duration-500 group-hover:scale-110">
+                {p.label}
               </div>
-              <span className="font-bold uppercase tracking-widest text-xs opacity-50 group-hover:opacity-100 transition-opacity">
+              <span className="text-[8px] uppercase tracking-[0.3em] font-bold opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                 {p.name}
               </span>
             </a>
@@ -237,46 +215,42 @@ export function SocialSection() {
 
 export function ContactSection() {
   return (
-    <section id="contact" className="py-24 px-6 bg-premium-black text-white relative overflow-hidden">
-      <div className="absolute top-0 right-0 w-1/3 h-full opacity-10 pointer-events-none">
-        <img src="https://images.unsplash.com/photo-1515562141207-7a18b5ce7142?auto=format&fit=crop&q=80&w=800&h=1200" alt="bg" className="w-full h-full object-cover" />
-      </div>
-
-      <div className="max-w-7xl mx-auto flex flex-col md:flex-row gap-16 relative z-10">
-        <div className="flex-1">
-          <span className="text-rose-gold font-bold uppercase tracking-widest mb-4 block">Visit Our Boutique</span>
-          <h2 className="text-4xl md:text-5xl font-serif mb-12">Let's Create Your Story Together</h2>
+    <section id="contact" className="py-32 px-12 bg-white border-y border-border">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-24">
+        <div>
+          <div className="text-[10px] uppercase tracking-[0.4em] text-gold font-bold mb-8 block underline decoration-soft-pink underline-offset-4">Get In Touch</div>
+          <h2 className="text-5xl md:text-7xl font-serif mb-12 leading-[0.9] tracking-tighter">
+            Let's <span className="italic text-gold">Create</span> <br /> Your Story
+          </h2>
           
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-12">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-12 pt-12 border-t border-border">
             <div>
-              <h4 className="text-gold font-bold uppercase text-xs tracking-widest mb-4">Location</h4>
-              <p className="text-lg opacity-70">Dhaka, Bangladesh</p>
+              <h4 className="text-[8px] uppercase tracking-[0.3em] font-bold text-[#999] mb-4">Location</h4>
+              <p className="text-sm font-medium text-premium-black tracking-wide">Dhaka, Bangladesh</p>
             </div>
             <div>
-              <h4 className="text-gold font-bold uppercase text-xs tracking-widest mb-4">Contact</h4>
-              <p className="text-lg opacity-70">+8801676393979</p>
-              <p className="text-lg opacity-70">support@zeenora.com</p>
+              <h4 className="text-[8px] uppercase tracking-[0.3em] font-bold text-[#999] mb-4">Inquiries</h4>
+              <p className="text-sm font-medium text-premium-black tracking-wide">+8801676393979</p>
+              <p className="text-sm font-medium text-premium-black tracking-wide">atelier@zeenora.com</p>
             </div>
           </div>
         </div>
 
-        <div className="flex-1">
-          <form className="space-y-6 bg-white/5 p-8 rounded-3xl backdrop-blur-md border border-white/10">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              <div className="space-y-2">
-                <label className="text-xs uppercase tracking-widest opacity-50 font-bold ml-1">Name</label>
-                <input type="text" className="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 focus:outline-none focus:border-rose-gold transition-colors" placeholder="Your Name" />
-              </div>
-              <div className="space-y-2">
-                <label className="text-xs uppercase tracking-widest opacity-50 font-bold ml-1">Email</label>
-                <input type="email" className="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 focus:outline-none focus:border-rose-gold transition-colors" placeholder="Email Address" />
-              </div>
+        <div className="bg-editorial-bg p-12 rounded-3xl border border-border mt-12 md:mt-0">
+          <form className="space-y-8" onSubmit={(e) => e.preventDefault()}>
+            <div className="space-y-4">
+              <label className="text-[8px] uppercase tracking-[0.3em] font-bold text-gold ml-1">Your Name</label>
+              <input type="text" className="w-full bg-transparent border-b border-border py-2 focus:outline-none focus:border-gold transition-colors text-sm font-sans" placeholder="Abbie Gold" />
             </div>
-            <div className="space-y-2">
-              <label className="text-xs uppercase tracking-widest opacity-50 font-bold ml-1">Message</label>
-              <textarea rows={4} className="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 focus:outline-none focus:border-rose-gold transition-colors resize-none" placeholder="How can we help?"></textarea>
+            <div className="space-y-4">
+              <label className="text-[8px] uppercase tracking-[0.3em] font-bold text-gold ml-1">Email Address</label>
+              <input type="email" className="w-full bg-transparent border-b border-border py-2 focus:outline-none focus:border-gold transition-colors text-sm font-sans" placeholder="abbie@luxury.com" />
             </div>
-            <button className="w-full bg-rose-gold text-white font-bold py-4 rounded-xl hover:bg-gold transition-all">Send Message</button>
+            <div className="space-y-4">
+              <label className="text-[8px] uppercase tracking-[0.3em] font-bold text-gold ml-1">Your Message</label>
+              <textarea rows={3} className="w-full bg-transparent border-b border-border py-2 focus:outline-none focus:border-gold transition-colors text-sm font-sans resize-none" placeholder="I'm interested in the bridal collection..."></textarea>
+            </div>
+            <button className="w-full bg-gold text-white text-[10px] uppercase font-bold tracking-[0.3em] py-5 rounded-full shadow-lg shadow-gold/20 hover:bg-premium-black transition-all">Send Inquiry</button>
           </form>
         </div>
       </div>

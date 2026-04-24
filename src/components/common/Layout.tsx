@@ -27,35 +27,34 @@ export function Navbar() {
   return (
     <nav
       className={cn(
-        'fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-6 py-4',
-        isScrolled ? 'bg-white/80 backdrop-blur-md shadow-sm py-3' : 'bg-transparent'
+        'fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-12 py-4 border-b',
+        isScrolled ? 'bg-white/90 backdrop-blur-md shadow-sm py-3 border-border' : 'bg-transparent border-transparent'
       )}
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         <Link 
           to="/" 
-          className="text-3xl font-serif font-bold tracking-tighter text-rose-gold"
+          className="text-2xl font-serif font-bold tracking-[0.25em] text-gold italic editorial-underline"
         >
-          Zeenora
+          ZEENORA
         </Link>
 
         {/* Desktop Menu */}
-        <div className="hidden md:flex items-center space-gap-8">
+        <div className="hidden md:flex items-center">
           {navLinks.map((link) => (
             <Link
               key={link.name}
               to={link.path.startsWith('#') ? '/' + link.path : link.path}
               className={cn(
-                'text-sm font-medium tracking-wide uppercase transition-colors hover:text-rose-gold mx-4',
-                location.pathname === link.path ? 'text-rose-gold' : 'text-premium-black/70'
+                'text-[10px] font-medium tracking-[0.2em] uppercase transition-colors hover:text-gold mx-6',
+                location.pathname === link.path ? 'text-gold' : 'text-[#777]'
               )}
             >
               {link.name}
             </Link>
           ))}
-          <button className="ml-4 p-2 text-premium-black hover:text-rose-gold transition-colors relative">
-            <ShoppingBag size={20} />
-            <span className="absolute top-0 right-0 w-4 h-4 bg-rose-gold text-white text-[10px] rounded-full flex items-center justify-center">0</span>
+          <button className="ml-6 px-6 py-2 bg-gold text-white text-[10px] uppercase tracking-widest font-bold rounded-full shadow-lg shadow-[#D4AF3744] hover:bg-premium-black transition-all">
+            Shop Now
           </button>
         </div>
 
@@ -105,49 +104,26 @@ export function Navbar() {
 
 export function Footer() {
   return (
-    <footer className="bg-gold-light pt-20 pb-10 px-6 border-t border-gold/10">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
-        <div className="col-span-1 md:col-span-2">
-          <h2 className="text-4xl font-serif font-bold text-rose-gold mb-4">Zeenora</h2>
-          <p className="text-premium-black/60 max-w-md leading-relaxed mb-8">
-            Elegance You Deserve. We don't just sell jewelry; we sell happiness and timeless style. Hand-selected pieces directly imported to bring quality to your doorstep.
-          </p>
-          <div className="flex space-x-4">
-            <a href="#" className="w-10 h-10 rounded-full border border-rose-gold/30 flex items-center justify-center text-rose-gold hover:bg-rose-gold hover:text-white transition-all">
-              <Facebook size={18} />
-            </a>
-            <a href="#" className="w-10 h-10 rounded-full border border-rose-gold/30 flex items-center justify-center text-rose-gold hover:bg-rose-gold hover:text-white transition-all">
-              <Instagram size={18} />
-            </a>
-            <a href="#" className="w-10 h-10 rounded-full border border-rose-gold/30 flex items-center justify-center text-rose-gold hover:bg-rose-gold hover:text-white transition-all">
-              <Youtube size={18} />
-            </a>
-          </div>
+    <footer className="h-40 md:h-24 bg-white border-t border-border px-12 flex flex-col md:flex-row items-center justify-between gap-6">
+      <div className="flex flex-wrap justify-center gap-12">
+        <div className="text-center md:text-left">
+          <div className="text-[8px] uppercase tracking-[0.2em] text-[#999] mb-1">Call Us</div>
+          <div className="text-xs font-medium text-premium-black">+8801676393979</div>
         </div>
-
-        <div>
-          <h3 className="text-lg font-bold mb-6 uppercase tracking-wider text-rose-gold">Quick Links</h3>
-          <ul className="space-y-4 text-premium-black/70">
-            <li><Link to="/" className="hover:text-rose-gold transition-colors">Home</Link></li>
-            <li><Link to="/products" className="hover:text-rose-gold transition-colors">Products</Link></li>
-            <li><Link to="/#about" className="hover:text-rose-gold transition-colors">About Us</Link></li>
-            <li><Link to="/#contact" className="hover:text-rose-gold transition-colors">Contact</Link></li>
-          </ul>
-        </div>
-
-        <div>
-          <h3 className="text-lg font-bold mb-6 uppercase tracking-wider text-rose-gold">Contact Us</h3>
-          <ul className="space-y-4 text-premium-black/70 italic">
-            <li>Dhaka, Bangladesh</li>
-            <li>+8801676393979</li>
-            <li>support@zeenora.com</li>
-          </ul>
+        <div className="text-center md:text-left">
+          <div className="text-[8px] uppercase tracking-[0.2em] text-[#999] mb-1">Visit</div>
+          <div className="text-xs font-medium text-premium-black">Dhaka, Bangladesh</div>
         </div>
       </div>
-      <div className="max-w-7xl mx-auto mt-20 pt-8 border-t border-gold/10 text-center">
-        <p className="text-sm text-premium-black/40">
-          © {new Date().getFullYear()} Zeenora Jewelry. All rights reserved.
-        </p>
+      
+      <div className="flex flex-col md:flex-row items-center gap-6">
+         <div className="flex space-x-4">
+           <div className="w-8 h-8 rounded-full border border-border flex items-center justify-center text-[10px] text-[#999] hover:border-gold hover:text-gold transition-colors">FB</div>
+           <div className="w-8 h-8 rounded-full border border-border flex items-center justify-center text-[10px] text-[#999] hover:border-gold hover:text-gold transition-colors">IG</div>
+           <div className="w-8 h-8 rounded-full border border-border flex items-center justify-center text-[10px] text-[#999] hover:border-gold hover:text-gold transition-colors">YT</div>
+         </div>
+         <div className="hidden md:block h-4 w-px bg-border"></div>
+         <div className="text-[10px] tracking-wider text-[#999]">&copy; {new Date().getFullYear()} ZEENORA. All rights reserved.</div>
       </div>
     </footer>
   );

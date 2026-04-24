@@ -34,10 +34,10 @@ export function ProductsPage() {
                 key={cat}
                 onClick={() => setFilter(cat)}
                 className={cn(
-                  'px-6 py-2 rounded-full text-sm font-bold uppercase tracking-widest transition-all border',
+                  'px-6 py-2 rounded-full text-[10px] font-bold uppercase tracking-[0.2em] transition-all border outline-none',
                   filter === cat 
-                    ? 'bg-rose-gold text-white border-rose-gold shadow-lg shadow-rose-gold/20' 
-                    : 'bg-white text-premium-black/60 border-gold/10 hover:border-rose-gold hover:text-rose-gold'
+                    ? 'bg-gold text-white border-gold shadow-lg shadow-gold/20' 
+                    : 'bg-white text-[#777] border-border hover:border-gold hover:text-gold'
                 )}
               >
                 {cat}
@@ -60,7 +60,7 @@ export function ProductsPage() {
 
         <motion.div 
           layout
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
         >
           <AnimatePresence mode="popLayout">
             {filteredProducts.map((product) => (
@@ -70,36 +70,25 @@ export function ProductsPage() {
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.9 }}
-                className="group"
+                className="group bg-white p-4 rounded-xl border border-border hover:border-gold transition-all"
               >
-                <div className="relative aspect-[4/5] overflow-hidden rounded-3xl mb-6 bg-white luxury-shadow">
+                <div className="relative aspect-square overflow-hidden rounded-lg mb-4 bg-editorial-bg flex items-center justify-center">
                   <img
                     src={product.image}
                     alt={product.name}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                     referrerPolicy="no-referrer"
                   />
-                  <div className="absolute top-4 right-4 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                    <button className="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-lg hover:bg-rose-gold hover:text-white transition-colors">
-                      <Heart size={18} />
-                    </button>
-                    <button className="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-lg hover:bg-rose-gold hover:text-white transition-colors">
-                      <ShoppingCart size={18} />
-                    </button>
-                  </div>
-                  <div className="absolute bottom-4 left-4 right-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                    <button className="w-full bg-premium-black text-white py-4 rounded-2xl font-bold text-sm shadow-xl hover:bg-rose-gold transition-all">
-                      Order Now
-                    </button>
+                  <div className="absolute bottom-2 left-2 px-2 py-1 bg-white text-[8px] uppercase tracking-wider text-gold font-bold rounded shadow-sm opacity-0 group-hover:opacity-100 transition-opacity">
+                    New Collection
                   </div>
                 </div>
-                <div>
-                  <div className="flex justify-between items-start mb-1">
-                    <span className="text-[10px] uppercase tracking-[0.2em] text-rose-gold font-bold">{product.category}</span>
-                    <span className="text-gold font-bold">{product.price}</span>
-                  </div>
-                  <h3 className="font-serif text-xl text-premium-black mb-1 group-hover:text-rose-gold transition-colors">{product.name}</h3>
-                  <p className="text-sm text-premium-black/40 italic">Imported Quality</p>
+                <div className="text-left">
+                  <div className="text-xs font-bold text-premium-black uppercase truncate mb-1">{product.name}</div>
+                  <div className="text-gold font-serif text-sm italic">{product.price}</div>
+                  <button className="mt-4 w-full py-2 border border-gold text-gold text-[9px] uppercase font-bold rounded-full hover:bg-gold hover:text-white transition-all tracking-widest">
+                    Order Now
+                  </button>
                 </div>
               </motion.div>
             ))}
